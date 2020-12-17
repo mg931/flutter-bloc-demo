@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc_demo/model/api_user.dart';
 
@@ -6,10 +8,13 @@ class UserText extends StatelessWidget {
   UserText({this.user});
   @override
   Widget build(BuildContext context) {
+    int randomNumber = new Random().nextInt(100) + 1;
+    String url = 'https://i.pravatar.cc/$randomNumber';
+
     return new Container(
         child: Row(children: <Widget>[
       CircleAvatar(
-          backgroundImage: NetworkImage('https://source.unsplash.com/random')),
+          backgroundImage: NetworkImage(url)),
       Padding(
         padding: EdgeInsets.all(16.0),
       ),

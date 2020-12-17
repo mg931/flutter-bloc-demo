@@ -7,7 +7,7 @@ abstract class ApiUserRepo {
 }
 
 class ApiUserServices implements ApiUserRepo {
-  static const _baseUrl = '5f62103689dbd70016e19371.mockapi.io';
+  static const _baseUrl = '5fdb819391f19e00173346a4.mockapi.io';
   static const String _GET_ALBUMS = '/api/v1/users';
 
   @override
