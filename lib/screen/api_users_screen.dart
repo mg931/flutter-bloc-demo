@@ -47,7 +47,7 @@ class _ApiUsersScreenState extends State<ApiUsersScreen> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).backgroundColor,
         title: Text(
-          'Users',
+          'Flutter Bloc Demo',
           style: TextStyle(
             fontSize: 18,
             color: Theme.of(context).textTheme.bodyText1.color,
