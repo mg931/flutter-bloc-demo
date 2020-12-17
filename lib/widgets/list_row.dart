@@ -14,7 +14,9 @@ class ListRow extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Txt(text: 'ID is ${user.id}'),
+          // Txt(text: 'ID is ${user.id}'),
+          Txt(text: user.name),
+          Txt(text: user.name),
           Divider(),
         ],
       ),
