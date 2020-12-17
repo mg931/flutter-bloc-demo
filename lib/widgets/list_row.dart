@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc_demo/model/api_user.dart';
-import 'package:flutter_bloc_demo/widgets/txt.dart';
+import 'package:flutter_bloc_demo/widgets/user_list_item.dart';
 
 class ListRow extends StatelessWidget {
   final ApiUser user;
@@ -15,8 +15,7 @@ class ListRow extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Txt(text: 'ID is ${user.id}'),
-          Txt(text: user.name),
-          Txt(text: user.name),
+          UserText(user: user),
           Divider(),
         ],
       ),

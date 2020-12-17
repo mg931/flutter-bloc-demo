@@ -11,7 +11,7 @@ import 'package:flutter_bloc_demo/settings/preferences.dart';
 import 'package:flutter_bloc_demo/widgets/error.dart';
 import 'package:flutter_bloc_demo/widgets/list_row.dart';
 import 'package:flutter_bloc_demo/widgets/loading.dart';
-import 'package:flutter_bloc_demo/widgets/txt.dart';
+import 'package:flutter_bloc_demo/widgets/user_list_item.dart';
 
 class ApiUsersScreen extends StatefulWidget {
   @override
@@ -46,7 +46,13 @@ class _ApiUsersScreenState extends State<ApiUsersScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).backgroundColor,
-        title: Txt(text: 'Users'),
+        title: Text(
+          'Users',
+          style: TextStyle(
+            fontSize: 18,
+            color: Theme.of(context).textTheme.bodyText1.color,
+          ),
+        ),
         actions: [
           Switch(
             value: Preferences.getTheme() == AppTheme.lightTheme,
