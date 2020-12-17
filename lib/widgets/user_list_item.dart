@@ -7,7 +7,13 @@ class UserText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      child: Column(
+        child: Row(children: <Widget>[
+      CircleAvatar(
+          backgroundImage: NetworkImage('https://source.unsplash.com/random')),
+      Padding(
+        padding: EdgeInsets.all(16.0),
+      ),
+      Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
@@ -26,6 +32,6 @@ class UserText extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ]));
   }
 }
