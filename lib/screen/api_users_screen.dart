@@ -72,7 +72,7 @@ class _ApiUsersScreenState extends State<ApiUsersScreen> {
             String message = '${error.message}\nTap to Retry.';
             return ErrorTxt(
               message: message,
-              onTap: _loadApiUsers(),
+              // onTap: _loadApiUsers(),
             );
           }
           if (state is ApiUsersLoaded) {
