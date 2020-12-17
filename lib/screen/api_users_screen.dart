@@ -8,6 +8,10 @@ import 'package:flutter_bloc_demo/bloc/theme_events.dart';
 import 'package:flutter_bloc_demo/model/api_user.dart';
 import 'package:flutter_bloc_demo/settings/app_themes.dart';
 import 'package:flutter_bloc_demo/settings/preferences.dart';
+import 'package:flutter_bloc_demo/widgets/error.dart';
+import 'package:flutter_bloc_demo/widgets/list_row.dart';
+import 'package:flutter_bloc_demo/widgets/loading.dart';
+import 'package:flutter_bloc_demo/widgets/txt.dart';
 
 class ApiUsersScreen extends StatefulWidget {
   @override
@@ -32,7 +36,7 @@ class _ApiUsersScreenState extends State<ApiUsersScreen> {
 
   _setTheme(bool darkTheme) async {
     AppTheme selectedTheme =
-    darkTheme ? AppTheme.lightTheme : AppTheme.darkTheme;
+        darkTheme ? AppTheme.lightTheme : AppTheme.darkTheme;
     context.bloc<ThemeBloc>().add(ThemeEvent(appTheme: selectedTheme));
     Preferences.saveTheme(selectedTheme);
   }
@@ -42,7 +46,7 @@ class _ApiUsersScreenState extends State<ApiUsersScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).backgroundColor,
-        title: Text('Users'),
+        title: Txt(text: 'Users'),
         actions: [
           Switch(
             value: Preferences.getTheme() == AppTheme.lightTheme,
@@ -66,16 +70,31 @@ class _ApiUsersScreenState extends State<ApiUsersScreen> {
           if (state is ApiUsersListError) {
             final error = state.error;
             String message = '${error.message}\nTap to Retry.';
-            return Text('failed');
+            return ErrorTxt(
+              message: message,
+              onTap: _loadApiUsers(),
+            );
           }
           if (state is ApiUsersLoaded) {
             List<ApiUser> apiUsers = state.apiUsers;
             print(apiUsers);
-            return Text('success loaded');
+            return _list(apiUsers);
           }
-          return Text('loading');
+          return Loading();
         }),
       ],
+    );
+  }
+
+  Widget _list(List<ApiUser> apiUsers) {
+    return Expanded(
+      child: ListView.builder(
+        itemCount: apiUsers.length,
+        itemBuilder: (_, index) {
+          ApiUser user = apiUsers[index];
+          return ListRow(user: user);
+        },
+      ),
     );
   }
 }
