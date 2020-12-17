@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_demo/bloc/bloc.dart';
 import 'package:flutter_bloc_demo/bloc/events.dart';
@@ -45,6 +46,7 @@ class _ApiUsersScreenState extends State<ApiUsersScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).backgroundColor,
+        brightness: Theme.of(context).brightness,
         title: Text(
           'Flutter Bloc Demo',
           style: TextStyle(
@@ -82,7 +84,6 @@ class _ApiUsersScreenState extends State<ApiUsersScreen> {
           }
           if (state is ApiUsersLoaded) {
             List<ApiUser> apiUsers = state.apiUsers;
-            print(apiUsers);
             return _list(apiUsers);
           }
           return Loading();
