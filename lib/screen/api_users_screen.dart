@@ -11,7 +11,6 @@ import 'package:flutter_bloc_demo/settings/preferences.dart';
 import 'package:flutter_bloc_demo/widgets/error.dart';
 import 'package:flutter_bloc_demo/widgets/list_row.dart';
 import 'package:flutter_bloc_demo/widgets/loading.dart';
-import 'package:flutter_bloc_demo/widgets/user_list_item.dart';
 
 class ApiUsersScreen extends StatefulWidget {
   @override
