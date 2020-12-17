@@ -7,44 +7,34 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_demo/api/services.dart';
 import 'package:flutter_bloc_demo/bloc/bloc.dart';
 import 'package:flutter_bloc_demo/screen/api_users_screen.dart';
+import 'package:flutter_bloc_demo/settings/preferences.dart';
 
-void main() => runApp(MyApp());
+import 'bloc/theme_bloc.dart';
+import 'bloc/theme_state.dart';
 
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return BlocProvider(
-//       create: (context) => ThemeBloc(),
-//       child: BlocBuilder<ThemeBloc, ThemeState>(
-//         builder: (BuildContext context, ThemeState themeState) {
-//           return MaterialApp(
-//             title: 'Flutter Bloc Demo',
-//             debugShowCheckedModeBanner: false,
-//             theme: themeState.themeData,
-//             home: BlocProvider(
-//               create: (context) => ApiUsersBloc(apiUserRepo: ApiUserServices()),
-//               child: ApiUsersScreen(),
-//             ),
-//           );
-//         },
-//       ),
-//     );
-//   }
-// }
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Preferences.init();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Welcome to Flutter',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Welcome to Flutter'),
-        ),
-        body: Center(
-          child: Text('Hello World'),
-        ),
+    return BlocProvider(
+      create: (context) => ThemeBloc(),
+      child: BlocBuilder<ThemeBloc, ThemeState>(
+        builder: (BuildContext context, ThemeState themeState) {
+          return MaterialApp(
+            title: 'Flutter Bloc Demo',
+            debugShowCheckedModeBanner: false,
+            theme: themeState.themeData,
+            home: BlocProvider(
+              create: (context) => ApiUsersBloc(apiUserRepo: ApiUserServices()),
+              child: ApiUsersScreen(),
+            ),
+          );
+        },
       ),
     );
   }
