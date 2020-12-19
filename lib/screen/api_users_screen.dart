@@ -26,17 +26,17 @@ class _ApiUsersScreenState extends State<ApiUsersScreen> {
   }
 
   _loadApiUsers() async {
-    context.bloc<ApiUsersBloc>().add(ApiUserEvents.fetchApiUsers);
+    context.read<ApiUsersBloc>().add(ApiUserEvents.fetchApiUsers);
   }
 
   _loadTheme() async {
-    context.bloc<ThemeBloc>().add(ThemeEvent(appTheme: Preferences.getTheme()));
+    context.read<ThemeBloc>().add(ThemeEvent(appTheme: Preferences.getTheme()));
   }
 
   _setTheme(bool darkTheme) async {
     AppTheme selectedTheme =
         darkTheme ? AppTheme.lightTheme : AppTheme.darkTheme;
-    context.bloc<ThemeBloc>().add(ThemeEvent(appTheme: selectedTheme));
+    context.read<ThemeBloc>().add(ThemeEvent(appTheme: selectedTheme));
     Preferences.saveTheme(selectedTheme);
   }
 
